@@ -1,7 +1,19 @@
 #include "dbbe/engine.hpp"
 #include "dbbe/colors.hpp"
 
+#include "ui/button.hpp"
+
+#include "unit_builder.hpp"
+
+#include <vector>
+
 int main_shader;
+enum GameState {
+    MAIN_MENU,
+    UNIT_BUILDER,
+};
+GameState gameState;
+UnitBuilder *unitbuilder = nullptr;
 
 void key(GLFWwindow *windowobj, int key, int scancode, int action, int mods) {
     switch(key) {
@@ -14,7 +26,18 @@ void mouse(GLFWwindow *window, int button, int action, int mods) {
 
 }
 
+void open_unit_builder() {
+    gameState = UNIT_BUILDER;
+    UnitBuilder unitBuilder();
+    unitbuilder = &unitBuilder;
+}
+
 void display_loop(Window *windowobj) {
+
+    gameState = MAIN_MENU;
+    std::vector<Button> buttons = {};
+    Button unitBuilder(open_unit_builder, 0.5, 0.5, "Unit Builder", turquoise);
+
     while(!glfwWindowShouldClose(windowobj->glwindow)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(main_shader);
@@ -22,6 +45,8 @@ void display_loop(Window *windowobj) {
         glUniform1d(id, dim);
         id = glGetUniformLocation(main_shader, "asp");
         glUniform1d(id, asp);
+
+
 
         int err = glGetError();
         if(err) {

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "8caa528eb63bcbb0",
+        "id": "0b04d5bf2c85570b",
         "type": "tabs",
         "children": [
           {
-            "id": "6899e45c79c91748",
+            "id": "8e105b74481b2104",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -176,9 +176,9 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "6899e45c79c91748",
+  "active": "8e105b74481b2104",
   "lastOpenFiles": [
-    "Welcome.md",
-    "TODO.md"
+    "TODO.md",
+    "Welcome.md"
   ]
 }
