@@ -9,9 +9,3 @@ meson setup builddir
 meson compile -C builddir
 ./builddir/tutorial
 ----
-
-== Sadness
-
-So I followed one tutorial that was alright but out of date and feature incomplete.
-So now I'm going to do the much better looking https://vkguide.dev/.
-Which means restarting :).
