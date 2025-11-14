@@ -2,7 +2,24 @@
 
 Summon little guys
 
+I tried the VKGuide, but it has a bunch of issues with running on linux.
+A few people tried and failed so I'm just going to keep using, improving, and extending this.
+
 == Build
+
+Need to install Vulkan SDK https://vulkan.lunarg.com/sdk/home
+
+Need to install glm, glfw3, meson and all their dependencies.
+
+[bash]
+----
+sudo apt install libglfw3-dev
+sudo apt install libglm-dev
+sudo apt install meson
+----
+
+To actually build and run:
+
 [bash]
 ----
 meson setup builddir
