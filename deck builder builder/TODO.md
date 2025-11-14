@@ -6,14 +6,14 @@ kanban-plugin: board
 
 ## TODO
 
-- [ ] Main Menu
 - [ ] Font
 	- [ ] add ttf reading
 
 
 ## In Progress
 
-- [ ] Character Creator
+- [ ] Main Menu
+- [ ] Unit Builder
 	- [ ] add shape models
 	- [ ] add shape options to left
 	- [ ] when click create shape and drag with cursor
