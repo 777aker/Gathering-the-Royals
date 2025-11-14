@@ -2,12 +2,15 @@
 
 Summon little guys
 
+The original Vulkan tutorial I found was alright but didn't have everything I wanted.
 I tried the VKGuide, but it has a bunch of issues with running on linux.
-A few people tried and failed so I'm just going to keep using, improving, and extending this.
+So, I'm going back to OpenGL for this project. 
+This project is 2D anyway so Vulkan is kind of overkill and doesn't make a ton of sense.
+But I did learn a lot, and I'll use Vulkan for Bugs in the System because it does make sense there.
 
 == Build
 
-Need to install Vulkan SDK https://vulkan.lunarg.com/sdk/home
+Need to install GLUT and OpenGL https://www.prinmath.com/csci5229/misc/install.html
 
 Need to install glm, glfw3, meson and all their dependencies.
 

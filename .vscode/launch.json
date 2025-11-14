@@ -4,7 +4,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/builddir/tutorial",
+            "program": "${workspaceFolder}/builddir/dbb",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
