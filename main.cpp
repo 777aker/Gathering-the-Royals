@@ -3,67 +3,28 @@
 
 #include "ui/button.hpp"
 
-#include "unit_builder.hpp"
+#include "game_manager.hpp"
 
 #include <vector>
 
-int main_shader;
-enum GameState {
-    MAIN_MENU,
-    UNIT_BUILDER,
-};
-GameState gameState;
-UnitBuilder *unitbuilder = nullptr;
-
-void key(GLFWwindow *windowobj, int key, int scancode, int action, int mods) {
-    switch(key) {
-        case GLFW_KEY_ESCAPE:
-        glfwSetWindowShouldClose(windowobj, 1);
-    }
+void key(GLFWwindow *gl_window, int key, int scancode, int action, int mods)
+{
+    GameManager *gm = (GameManager *)glfwGetWindowUserPointer(gl_window);
+    gm->key(gl_window, key, scancode, action, mods);
 }
 
-void mouse(GLFWwindow *window, int button, int action, int mods) {
-
+void mouse(GLFWwindow *gl_window, int button, int action, int mods)
+{
+    GameManager *gm = (GameManager *)glfwGetWindowUserPointer(gl_window);
+    gm->mouse(gl_window, button, action, mods);
 }
 
-void open_unit_builder() {
-    gameState = UNIT_BUILDER;
-    UnitBuilder unitBuilder();
-    unitbuilder = &unitBuilder;
-}
-
-void display_loop(Window *windowobj) {
-
-    gameState = MAIN_MENU;
-    std::vector<Button> buttons = {};
-    Button unitBuilder(open_unit_builder, 0.5, 0.5, "Unit Builder", turquoise);
-
-    while(!glfwWindowShouldClose(windowobj->glwindow)) {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glUseProgram(main_shader);
-        int id = glGetUniformLocation(main_shader, "dim");
-        glUniform1d(id, dim);
-        id = glGetUniformLocation(main_shader, "asp");
-        glUniform1d(id, asp);
-
-
-
-        int err = glGetError();
-        if(err) {
-            fprintf(stderr, "[%s] %s\n", "display", gluErrorString(err));
-        }
-        glFlush();
-        glfwSwapBuffers(windowobj->glwindow);
-        glfwPollEvents();
-    }
-}
-
-int main(int argc, char *argv[]) {
-    Window mainwindow("Deck Builder Builder", 0, 800, 500, key, mouse);
+int main(int argc, char *argv[])
+{
+    Window mainwindow("Deck Builder Builder", 0, 1200, 900, key, mouse);
     // clear color accepts them in a 1.0-0.0 scale so this is the only time we need to do this
     glClearColor((float)midnight_blue.r / 255.0, (float)midnight_blue.g / 255.0, (float)midnight_blue.b / 255.0, 1.0);
 
-    main_shader = CreateShaderProg("shaders/main.vert", "shaders/main.frag");
-
-    display_loop(&mainwindow);
+    GameManager gm(&mainwindow);
+    glfwSetWindowUserPointer(mainwindow.glwindow, &gm);
 }

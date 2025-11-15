@@ -4,8 +4,8 @@
 
 class UnitBuilder
 {
-    public:
+public:
     UnitBuilder();
     ~UnitBuilder();
-    void draw(Window *windowobj);
-}
+    void draw();
+};
